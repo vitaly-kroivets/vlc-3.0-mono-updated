@@ -53,6 +53,7 @@ libqt_plugin_la_SOURCES = \
 	gui/qt/adapters/chromaprint.cpp gui/qt/adapters/chromaprint.hpp \
 	gui/qt/adapters/variables.cpp gui/qt/adapters/variables.hpp \
 	gui/qt/dialogs/playlist.cpp gui/qt/dialogs/playlist.hpp \
+	gui/qt/dialogs/audiotrack.cpp gui/qt/dialogs/audiotrack.hpp \
 	gui/qt/dialogs/bookmarks.cpp gui/qt/dialogs/bookmarks.hpp \
 	gui/qt/dialogs/preferences.cpp gui/qt/dialogs/preferences.hpp \
 	gui/qt/dialogs/mediainfo.cpp gui/qt/dialogs/mediainfo.hpp \
@@ -174,6 +175,7 @@ nodist_libqt_plugin_la_SOURCES = \
 	gui/qt/adapters/chromaprint.moc.cpp \
 	gui/qt/adapters/variables.moc.cpp \
 	gui/qt/dialogs/playlist.moc.cpp \
+	gui/qt/dialogs/audiotrack.moc.cpp \
 	gui/qt/dialogs/bookmarks.moc.cpp \
 	gui/qt/dialogs/mediainfo.moc.cpp \
 	gui/qt/dialogs/extended.moc.cpp \

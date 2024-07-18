@@ -412,6 +412,9 @@ QMenu *VLCMenuBar::FileMenu( intf_thread_t *p_intf, QWidget *parent, MainInterfa
  **/
 QMenu *VLCMenuBar::ToolsMenu( intf_thread_t *p_intf, QMenu *menu )
 {
+    addDPStaticEntry( menu, qtr( "&Audio Tracks"), ":/menu/settings.svg",
+            SLOT( audioTrackDialog() ), "" );
+            
     addDPStaticEntry( menu, qtr( "&Effects and Filters"), ":/menu/settings.svg",
             SLOT( extendedDialog() ), "Ctrl+E" );
 
@@ -1405,6 +1408,19 @@ int VLCMenuBar::CreateChoicesMenu( QMenu *submenu, const char *psz_var,
 #define CURVAL val_list.p_list->p_values[i]
 #define CURTEXT text_list.p_list->p_values[i].psz_string
 #define RADIO_OR_COMMAND  ( i_type & ( VLC_VAR_ISCOMMAND | VLC_VAR_HASCHOICE ) ) ? ITEM_RADIO : ITEM_NORMAL
+    // In case it is audio track menu, Add "All Tracks" sub setting
+    if(!strcmp(psz_var, "audio-es") && ((i_type & VLC_VAR_TYPE) == VLC_VAR_INTEGER)) {
+        vlc_value_t lastVal;
+        lastVal.i_int = 9999;
+        lastVal.b_bool = false;
+        lastVal.psz_string = "All Tracks";
+        QString menutext;
+        var_Get( p_object, psz_var, &val );
+        menutext = qfue( "All Tracks" );
+        CreateAndConnect( submenu, psz_var, menutext, "", RADIO_OR_COMMAND,
+                p_object, lastVal, i_type, ( lastVal.i_int == val.i_int ) && CheckTitle( p_object, psz_var ) );
+        submenu->addSeparator();
+    }
 
     for( i = 0; i < val_list.p_list->i_count; i++ )
     {

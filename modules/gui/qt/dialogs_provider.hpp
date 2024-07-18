@@ -131,6 +131,7 @@ public slots:
     void mediaInfoDialog();
     void mediaCodecDialog();
     void prefsDialog();
+    void audioTrackDialog();
     void extendedDialog();
     void synchroDialog();
     void messagesDialog();

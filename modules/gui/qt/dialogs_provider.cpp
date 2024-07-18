@@ -43,6 +43,7 @@
 #include "dialogs/preferences.hpp"
 #include "dialogs/mediainfo.hpp"
 #include "dialogs/messages.hpp"
+#include "dialogs/audiotrack.hpp"
 #include "dialogs/extended.hpp"
 #include "dialogs/vlm.hpp"
 #include "dialogs/sout.hpp"
@@ -94,6 +95,7 @@ DialogsProvider::~DialogsProvider()
     PlaylistDialog::killInstance();
     MediaInfoDialog::killInstance();
     MessagesDialog::killInstance();
+    AudioTrackDialog::killInstance();
     BookmarksDialog::killInstance();
 #ifdef ENABLE_VLM
     VLMDialog::killInstance();
@@ -176,6 +178,8 @@ void DialogsProvider::customEvent( QEvent *event )
            prefsDialog(); break;
         case INTF_DIALOG_BOOKMARKS:
            bookmarksDialog(); break;
+        case INTF_DIALOG_AUDIOTRACK:
+           audioTrackDialog(); break;
         case INTF_DIALOG_EXTENDED:
            extendedDialog(); break;
         case INTF_DIALOG_SENDKEY:
@@ -251,6 +255,18 @@ void DialogsProvider::prefsDialog()
 {
     PrefsDialog *p = new PrefsDialog( (QWidget *)p_intf->p_sys->p_mi, p_intf );
     p->toggleVisible();
+}
+
+void DialogsProvider::audioTrackDialog()
+{
+    // AudioTrackDialog *audTrkDialog = AudioTrackDialog::getInstance(p_intf );
+
+    // if(audTrkDialog->isVisible())
+    //     audTrkDialog->hide();
+    // else
+    //     audTrkDialog->show();
+
+    AudioTrackDialog::getInstance( p_intf )->toggleVisible();
 }
 
 void DialogsProvider::extendedDialog()

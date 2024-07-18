@@ -1103,7 +1103,7 @@ StartPCM( JNIEnv *env, audio_output_t *p_aout, unsigned i_max_channels )
         } else
         {
             if( i_nb_channels == 1 )
-                p_sys->fmt.i_physical_channels = AOUT_CHAN_LEFT;
+                p_sys->fmt.i_physical_channels = AOUT_CHANS_FRONT;
             else
                 p_sys->fmt.i_physical_channels = AOUT_CHANS_STEREO;
         }
